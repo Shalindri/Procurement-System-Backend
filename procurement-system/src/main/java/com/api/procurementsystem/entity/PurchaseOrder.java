@@ -16,6 +16,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 
 @Entity
 @Table(name ="purchase_order")
@@ -71,11 +75,13 @@ public class PurchaseOrder {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	 
+	@JsonIgnore
 	public SiteManager getSite_manager() {
 		return site_manager;
 	}
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public void setSite_manager(SiteManager site_manager) {
 		this.site_manager = site_manager;
 	}
@@ -95,11 +101,12 @@ public class PurchaseOrder {
 	public void setOrder_status(String order_status) {
 		this.order_status = order_status;
 	}
-
+	
+	@JsonIgnore
 	public Supplier getSupplier() {
 		return supplier;
 	}
-
+	@JsonProperty(access = Access.WRITE_ONLY)
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}

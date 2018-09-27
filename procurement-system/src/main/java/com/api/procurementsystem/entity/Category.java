@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -33,6 +35,7 @@ public class Category {
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "category")
+    @JsonIgnore
     private Set<Catalogue> items = new HashSet<>();
 
 	public Long getId() {

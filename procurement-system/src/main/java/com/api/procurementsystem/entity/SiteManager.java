@@ -11,8 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 
 @Entity
 @Table(name = "site_manager")
@@ -20,16 +18,21 @@ public class SiteManager {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@NotNull	
 	private Long id;
 	
     @Column(name = "name")
 	private String name;
     
+    @Column(name="contact_num")
+    private String contact_num;
+    
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "site_manager")
     private Set<PurchaseOrder> purchaseOrders = new HashSet<>();
+    
+   
+
 
 	public Long getId() {
 		return id;
@@ -53,6 +56,14 @@ public class SiteManager {
 
 	public void setPurchaseOrders(Set<PurchaseOrder> purchaseOrders) {
 		this.purchaseOrders = purchaseOrders;
+	}
+
+	public String getContact_num() {
+		return contact_num;
+	}
+
+	public void setContact_num(String contact_num) {
+		this.contact_num = contact_num;
 	}
     
     

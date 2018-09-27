@@ -22,9 +22,13 @@ public class Item {
    	private Float price;
     
     @Column(name = "quantity")
-   	private Integer quantity;
+   	private Float quantity;
     
+    @Column(name="unit")
+    private String unit;
     
+    @Column(name = "issued_quantity")
+   	private Float issued_quantity;
 
 	public Long getId() {
 		return id;
@@ -50,12 +54,28 @@ public class Item {
 		this.price = price;
 	}
 
-	public Integer getQuantity() {
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public Float getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Float quantity) {
 		this.quantity = quantity;
+	}
+
+	public Float getIssued_quantity() {
+		return issued_quantity;
+	}
+
+	public void setIssued_quantity(Float issued_quantity) {
+		this.issued_quantity = issued_quantity;
 	}
 
 	

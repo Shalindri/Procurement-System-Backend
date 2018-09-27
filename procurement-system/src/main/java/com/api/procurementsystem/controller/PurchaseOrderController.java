@@ -46,6 +46,14 @@ public class PurchaseOrderController {
 	     return purchaseOrderService.getOrderById(id);
 	 }
 	
+	@ResponseBody
+	 @RequestMapping(value = "/unapproved", method = RequestMethod.GET)
+	 public List<PurchaseOrder> getUnApprovedOrders() {
+	     return purchaseOrderService.getUnApprovedOrders();
+	 }
+	
+	
+	
 	
 
 
