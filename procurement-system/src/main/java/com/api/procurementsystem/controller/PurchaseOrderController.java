@@ -52,6 +52,14 @@ public class PurchaseOrderController {
 	     return purchaseOrderService.getUnApprovedOrders();
 	 }
 	
+	@ResponseBody
+	 @RequestMapping(value = "/dispatched", method = RequestMethod.GET)
+	 public List<PurchaseOrder> getDispatchedOrders() {
+	     return purchaseOrderService.getDispatchedOrders();
+	 }
+	
+	
+	
 	
 	
 	

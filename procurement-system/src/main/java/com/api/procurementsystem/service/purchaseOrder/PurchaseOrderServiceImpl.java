@@ -97,5 +97,22 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		return ResponseEntity.noContent().build();
 	}
 
+	@Override
+	public List<PurchaseOrder> getDispatchedOrders() {
+		
+		List<PurchaseOrder> orderList =  (List<PurchaseOrder>) purchaseOrderRepository.findAll();
+		List<PurchaseOrder> dispatched = new ArrayList<PurchaseOrder>();
+		for(PurchaseOrder po:orderList) {
+			//System.out.println(po.getOrder_status());
+			String status= po.getOrder_status();
+			if(status.equals("Dispatched")){
+				
+					dispatched.add(po);
+				
+			}
+	}
+		return dispatched;
+		
+	}
 
 }

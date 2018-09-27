@@ -16,5 +16,6 @@ public interface PurchaseOrderService {
 	Optional<PurchaseOrder> getOrderById(Long id);
 	List<PurchaseOrder> getUnApprovedOrders();
 	ResponseEntity<Object> updateItemQuantity(Long orderId, Long itemId, Float quantity);
+	List<PurchaseOrder> getDispatchedOrders();
 }
 
