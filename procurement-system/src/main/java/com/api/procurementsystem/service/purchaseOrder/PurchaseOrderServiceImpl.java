@@ -13,9 +13,6 @@ import org.springframework.stereotype.Service;
 import com.api.procurementsystem.entity.Item;
 import com.api.procurementsystem.entity.PurchaseOrder;
 import com.api.procurementsystem.repository.PurchaseOrderRepository;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
 
 @Service
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
