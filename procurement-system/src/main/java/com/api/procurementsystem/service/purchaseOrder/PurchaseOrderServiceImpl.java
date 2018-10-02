@@ -13,15 +13,15 @@ import org.springframework.stereotype.Service;
 import com.api.procurementsystem.entity.Item;
 import com.api.procurementsystem.entity.PurchaseOrder;
 import com.api.procurementsystem.repository.PurchaseOrderRepository;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
+//import com.twilio.Twilio;
+//import com.twilio.rest.api.v2010.account.Message;
+//import com.twilio.type.PhoneNumber;
 
 @Service
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
-	public static final String ACCOUNT_SID = "AC5ce5be3917975f643c480d4fbc3d3dda";
-	public static final String AUTH_TOKEN = "821486b86dcb96339f8fe10cbc2740cc";
+	//public static final String ACCOUNT_SID = "AC5ce5be3917975f643c480d4fbc3d3dda";
+	//public static final String AUTH_TOKEN = "821486b86dcb96339f8fe10cbc2740cc";
 	
 	@Autowired
 	PurchaseOrderRepository purchaseOrderRepository;
