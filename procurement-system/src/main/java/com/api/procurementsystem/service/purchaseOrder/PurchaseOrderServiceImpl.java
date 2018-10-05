@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +15,10 @@ import org.springframework.stereotype.Service;
 import com.api.procurementsystem.entity.Item;
 import com.api.procurementsystem.entity.PurchaseOrder;
 import com.api.procurementsystem.repository.PurchaseOrderRepository;
-<<<<<<< HEAD
-// TODO: Auto-generated Javadoc
-//import com.twilio.Twilio;
-//import com.twilio.rest.api.v2010.account.Message;
-//import com.twilio.type.PhoneNumber;
-=======
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
->>>>>>> 37c0be3e06370667e15e2daa6aa9f06f8b0d0fa5
 
 /**
  * The Class PurchaseOrderServiceImpl.
@@ -31,8 +26,8 @@ import com.api.procurementsystem.repository.PurchaseOrderRepository;
 @Service
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
-	//public static final String ACCOUNT_SID = "AC5ce5be3917975f643c480d4fbc3d3dda";
-	//public static final String AUTH_TOKEN = "821486b86dcb96339f8fe10cbc2740cc";
+	public static final String ACCOUNT_SID = "AC5ce5be3917975f643c480d4fbc3d3dda";
+	public static final String AUTH_TOKEN = "821486b86dcb96339f8fe10cbc2740cc";
 	  /** logger for this class. */
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -40,7 +35,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	@Autowired
 	PurchaseOrderRepository purchaseOrderRepository;
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#createPurchaseOrder(com.api.procurementsystem.entity.PurchaseOrder)
 	 */
 	@Override
@@ -50,7 +45,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#getAllPurchaseOrders()
 	 */
 	@Override
@@ -58,7 +53,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
         return (List<PurchaseOrder>) purchaseOrderRepository.findAll();
     }
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#getOrderById(java.lang.Long)
 	 */
 	@Override
@@ -68,23 +63,25 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
 	
 	
-	/* (non-Javadoc)
+	/*
 	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#approveOrder(java.lang.Long)
 	 */
 	@Override
 	public ResponseEntity<Object> approveOrder(Long orderId) {
 		PurchaseOrder  orderObj = purchaseOrderRepository.findById(orderId).get();
-
 		orderObj.setOrder_status("Approved");
-		
 		purchaseOrderRepository.save(orderObj);
-
-
+		
+		String messageBody="Hi " + orderObj.getSite_manager().getName()+", Your Order (OrderId:"+orderObj.getSequential_ref()+") has been Approved Successfully";
+		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+	    Message message = Message.creator(new PhoneNumber(orderObj.getSite_manager().getContact_num()),
+	    new PhoneNumber("+18064969034"), messageBody).create();
+	    
 		return ResponseEntity.noContent().build();
 	}
 	
 
-	/* (non-Javadoc)
+	/*
 	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#getUnApprovedOrders()
 	 */
 	@Override
@@ -105,7 +102,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		return unapproved;
 	}
 
-	/* (non-Javadoc)
+	/*
 	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#updateItemQuantity(java.lang.Long, java.lang.Long, java.lang.Float)
 	 */
 	@Override
@@ -129,7 +126,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		return ResponseEntity.noContent().build();
 	}
 
-	/* (non-Javadoc)
+	/* 
 	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#getDispatchedOrders()
 	 */
 	@Override
@@ -150,7 +147,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		
 	}
 	
-	/* (non-Javadoc)
+	/* 
 	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#evictCache()
 	 */
 	@Override
