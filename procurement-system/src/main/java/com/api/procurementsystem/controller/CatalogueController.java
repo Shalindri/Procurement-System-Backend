@@ -30,7 +30,7 @@ public class CatalogueController {
 		catalogueService.addItemToCatalogue(catalogue);;
 	}
 	
-	//Calling method to get all the items in the catelogue
+	//Calling method to get all the items in the item catelogue
 	@ResponseBody
 	 @RequestMapping(value = "/list", method = RequestMethod.GET)
 	 public List<Catalogue> getAllItems() {
