@@ -8,6 +8,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "management")
-public class Management extends AuthorizedEmp{
+public class Management{
 
 }

@@ -10,7 +10,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "senior_staff_member")
-public class SeniorStaffMember extends AuthorizedEmp{
+public class SeniorStaffMember {
 	
 	/** The role. */
 	@Column(name = "role")
