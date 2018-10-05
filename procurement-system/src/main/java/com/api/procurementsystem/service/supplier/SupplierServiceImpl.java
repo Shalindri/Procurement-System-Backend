@@ -22,19 +22,31 @@ import com.api.procurementsystem.repository.InvoiceRepository;
 import com.api.procurementsystem.repository.PurchaseOrderRepository;
 import com.api.procurementsystem.repository.SupplierRepository;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SupplierServiceImpl.
+ */
 @Service
 public class SupplierServiceImpl implements SupplierService {
 	
     /** logger for this class. */
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	/** The supplier repository. */
 	@Autowired
 	SupplierRepository supplierRepository;
+	
+	/** The purchase order repository. */
 	@Autowired
 	PurchaseOrderRepository purchaseOrderRepository;
+	
+	/** The invoice repository. */
 	@Autowired
 	InvoiceRepository invoiceRepository;
 
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.supplier.SupplierService#getOrdersBySupplier(java.lang.Long)
+	 */
 	@Override
 	public Set<PurchaseOrder> getOrdersBySupplier(Long supplierId) {
 		Supplier supObj = supplierRepository.findById(supplierId).get();
@@ -53,12 +65,18 @@ public class SupplierServiceImpl implements SupplierService {
 		return approved;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.supplier.SupplierService#addSupplier(com.api.procurementsystem.entity.Supplier)
+	 */
 	@Override
 	public void addSupplier(Supplier supplier) {
 		supplierRepository.save(supplier);
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.supplier.SupplierService#dispatchOrder(com.api.procurementsystem.entity.PurchaseOrder)
+	 */
 	@Override
 	public ResponseEntity<Object> dispatchOrder(PurchaseOrder purchaseOrder) {
 
@@ -94,12 +112,18 @@ public class SupplierServiceImpl implements SupplierService {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.supplier.SupplierService#getAllSuppliers()
+	 */
 	@Override
 	public List<Supplier> getAllSuppliers() {
 		
 		return (List<Supplier>) supplierRepository.findAll();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.supplier.SupplierService#evictCache()
+	 */
 	@Override
 	@CacheEvict(
 			value="routes",

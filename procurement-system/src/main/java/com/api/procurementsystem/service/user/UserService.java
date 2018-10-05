@@ -7,12 +7,24 @@ import org.springframework.stereotype.Service;
 import com.api.procurementsystem.entity.User;
 import com.api.procurementsystem.repository.UserRepository;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserService.
+ */
 @Service
 public class UserService {
 	
+	/** The user repository. */
 	@Autowired
 	UserRepository userRepository;
 	
+	/**
+	 * Check login.
+	 *
+	 * @param username the username
+	 * @param password the password
+	 * @return the string
+	 */
 	public String checkLogin(String username, String password) {
 		
 		List<User> users = (List<User>) userRepository.findAll();
@@ -33,6 +45,11 @@ public class UserService {
 		
 	}
 
+	/**
+	 * Register user.
+	 *
+	 * @param user the user
+	 */
 	public void registerUser(User user) {
 		
 		userRepository.save(user);

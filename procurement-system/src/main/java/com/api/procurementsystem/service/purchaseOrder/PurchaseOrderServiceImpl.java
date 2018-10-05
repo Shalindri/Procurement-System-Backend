@@ -16,10 +16,14 @@ import org.springframework.stereotype.Service;
 import com.api.procurementsystem.entity.Item;
 import com.api.procurementsystem.entity.PurchaseOrder;
 import com.api.procurementsystem.repository.PurchaseOrderRepository;
+// TODO: Auto-generated Javadoc
 //import com.twilio.Twilio;
 //import com.twilio.rest.api.v2010.account.Message;
 //import com.twilio.type.PhoneNumber;
 
+/**
+ * The Class PurchaseOrderServiceImpl.
+ */
 @Service
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
@@ -28,9 +32,13 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	  /** logger for this class. */
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	/** The purchase order repository. */
 	@Autowired
 	PurchaseOrderRepository purchaseOrderRepository;
 	
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#createPurchaseOrder(com.api.procurementsystem.entity.PurchaseOrder)
+	 */
 	@Override
 	public void createPurchaseOrder(PurchaseOrder purchaseOrder) {
 		
@@ -38,11 +46,17 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#getAllPurchaseOrders()
+	 */
 	@Override
     public List<PurchaseOrder> getAllPurchaseOrders(){
         return (List<PurchaseOrder>) purchaseOrderRepository.findAll();
     }
 	
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#getOrderById(java.lang.Long)
+	 */
 	@Override
 	public Optional<PurchaseOrder> getOrderById(Long id) {
 		return purchaseOrderRepository.findById(id);
@@ -50,6 +64,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
 	
 	
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#approveOrder(java.lang.Long)
+	 */
 	@Override
 	public ResponseEntity<Object> approveOrder(Long orderId) {
 		PurchaseOrder  orderObj = purchaseOrderRepository.findById(orderId).get();
@@ -63,6 +80,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	}
 	
 
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#getUnApprovedOrders()
+	 */
 	@Override
 	public List<PurchaseOrder> getUnApprovedOrders() {
 		
@@ -81,6 +101,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		return unapproved;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#updateItemQuantity(java.lang.Long, java.lang.Long, java.lang.Float)
+	 */
 	@Override
 	public ResponseEntity<Object> updateItemQuantity(Long orderId, Long itemId,Float quantity) {
 		PurchaseOrder  orderObj = purchaseOrderRepository.findById(orderId).get();
@@ -102,6 +125,9 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		return ResponseEntity.noContent().build();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#getDispatchedOrders()
+	 */
 	@Override
 	public List<PurchaseOrder> getDispatchedOrders() {
 		
@@ -119,6 +145,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		return dispatched;
 		
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService#evictCache()
+	 */
 	@Override
 	@CacheEvict(
 			value="routes",

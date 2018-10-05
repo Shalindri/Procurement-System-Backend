@@ -1,6 +1,5 @@
 package com.api.procurementsystem.controller;
 
-
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,28 +10,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.api.procurementsystem.entity.Catalogue;
 import com.api.procurementsystem.entity.PurchaseOrder;
 import com.api.procurementsystem.entity.Supplier;
 import com.api.procurementsystem.service.supplier.SupplierService;
 
+
+/**
+ * The Class SupplierController.
+ */
 @RestController
 @RequestMapping("/suppliers")
 public class SupplierController {
 	
+	/** The supplier service. */
 	@Autowired
 	SupplierService supplierService;
+	
 	
 	@ResponseBody
 	 @RequestMapping(value = "/{id}/orders", method = RequestMethod.GET)
 	 public Set<PurchaseOrder> getOrderBySupplier(@PathVariable("id") Long supplierId) {
 	     return supplierService.getOrdersBySupplier(supplierId);
 	 }
+	
+	
 	@RequestMapping(value = "/addSupplier", method = RequestMethod.POST)
 	public void addSupplier(@RequestBody Supplier supplier) {
 		supplierService.addSupplier(supplier);
 	}
+	
 	
 	@ResponseBody
 	 @RequestMapping(value = "/orders/dispatchOrder", method = RequestMethod.PUT)
@@ -40,6 +46,7 @@ public class SupplierController {
 	     return supplierService.dispatchOrder(purchaseOrder);
 	 }
 
+	
 	//get all suppliers
 	@ResponseBody
 	 @RequestMapping(value = "", method = RequestMethod.GET)

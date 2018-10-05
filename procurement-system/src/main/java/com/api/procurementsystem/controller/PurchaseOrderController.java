@@ -15,30 +15,36 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.procurementsystem.entity.PurchaseOrder;
 import com.api.procurementsystem.service.purchaseOrder.PurchaseOrderService;
 
+
 @RestController
 @RequestMapping("/orders")
 public class PurchaseOrderController {
 
+
 	@Autowired
 	PurchaseOrderService purchaseOrderService;
 	
+
 	@RequestMapping(value = "/createOrder", method = RequestMethod.POST)
 	public void createPurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
 		purchaseOrderService.createPurchaseOrder(purchaseOrder);
 	}
 	
 	
+
 	@ResponseBody
 	 @RequestMapping(value = "", method = RequestMethod.GET)
 	 public List<PurchaseOrder> getAllPurchaseOrders() {
 	     return purchaseOrderService.getAllPurchaseOrders();
 	 }
 	
+
 	@ResponseBody
 	 @RequestMapping(value = "/{id}/approveOrder", method = RequestMethod.PUT)
 	 public ResponseEntity<Object> approveOrder(@PathVariable("id") Long orderId) {
 	     return purchaseOrderService.approveOrder(orderId);
 	 }
+	
 	
 	@ResponseBody
 	 @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -46,11 +52,13 @@ public class PurchaseOrderController {
 	     return purchaseOrderService.getOrderById(id);
 	 }
 	
+	
 	@ResponseBody
 	 @RequestMapping(value = "/unapproved", method = RequestMethod.GET)
 	 public List<PurchaseOrder> getUnApprovedOrders() {
 	     return purchaseOrderService.getUnApprovedOrders();
 	 }
+	
 	
 	@ResponseBody
 	 @RequestMapping(value = "/dispatched", method = RequestMethod.GET)
