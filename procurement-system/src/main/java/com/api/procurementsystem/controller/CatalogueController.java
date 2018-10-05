@@ -23,13 +23,14 @@ public class CatalogueController {
 	@Autowired
 	private CatalogueService catalogueService;
 	
-	
+	//Calling method to add Items to the catelogue
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
 	@ResponseStatus(value=HttpStatus.CREATED,reason="Success message shalindri created**********")  
 	public void addItemToCatalogue(@RequestBody Catalogue catalogue) {
 		catalogueService.addItemToCatalogue(catalogue);;
 	}
 	
+	//Calling method to get all the items in the catelogue
 	@ResponseBody
 	 @RequestMapping(value = "/list", method = RequestMethod.GET)
 	 public List<Catalogue> getAllItems() {
