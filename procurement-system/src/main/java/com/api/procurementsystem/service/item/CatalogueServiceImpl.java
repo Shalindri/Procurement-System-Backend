@@ -24,4 +24,10 @@ public class CatalogueServiceImpl implements CatalogueService {
         return (List<Catalogue>) catalogueRepository.findAll();
     }
 
+	@Override
+	public void evictCache() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -37,6 +37,17 @@ public class Category {
             mappedBy = "category")
     @JsonIgnore
     private Set<Catalogue> items = new HashSet<>();
+    
+    
+    public Category() {
+    	
+    }
+    
+
+	public Category(Long id) {
+		super();
+		this.id = id;
+	}
 
 	public Long getId() {
 		return id;

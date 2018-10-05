@@ -17,5 +17,6 @@ public interface PurchaseOrderService {
 	List<PurchaseOrder> getUnApprovedOrders();
 	ResponseEntity<Object> updateItemQuantity(Long orderId, Long itemId, Float quantity);
 	List<PurchaseOrder> getDispatchedOrders();
+	void evictCache();
 }
 

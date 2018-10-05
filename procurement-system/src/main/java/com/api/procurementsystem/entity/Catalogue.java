@@ -41,6 +41,21 @@ public class Catalogue {
     @JsonIgnore
     private Category category;
 
+    public Catalogue() {
+    	
+    }
+    
+	public Catalogue(Long id, String name, Float price, String delivery_information, boolean is_restricted,
+			Category category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.delivery_information = delivery_information;
+		this.is_restricted = is_restricted;
+		this.category = category;
+	}
+
 	public Long getId() {
 		return id;
 	}

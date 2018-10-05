@@ -6,7 +6,11 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +24,9 @@ import com.api.procurementsystem.repository.SupplierRepository;
 
 @Service
 public class SupplierServiceImpl implements SupplierService {
+	
+    /** logger for this class. */
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	SupplierRepository supplierRepository;
@@ -92,5 +99,15 @@ public class SupplierServiceImpl implements SupplierService {
 		
 		return (List<Supplier>) supplierRepository.findAll();
 	}
+
+	@Override
+	@CacheEvict(
+			value="routes",
+			allEntries=true)
+	public void evictCache() {
+		logger.info("> evictCache");
+		logger.info("< evictCache");
+	}
+	
 
 }

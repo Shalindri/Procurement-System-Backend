@@ -23,7 +23,7 @@ public class UserController {
 	UserService userService;
 	
 	@ResponseBody
-	 @RequestMapping(value = "/login/", method = RequestMethod.GET)
+	 @RequestMapping(value = "/login", method = RequestMethod.GET)
 	 public String checkLogin(@RequestBody String username ,@RequestBody String password) {
 	     return userService.checkLogin(username, password);
 	 }

@@ -16,6 +16,7 @@ public interface SupplierService {
 	void addSupplier(Supplier supplier);
 	ResponseEntity<Object> dispatchOrder(PurchaseOrder purchaseOrder);
 	List<Supplier> getAllSuppliers();
+	void evictCache();
 
 	
 

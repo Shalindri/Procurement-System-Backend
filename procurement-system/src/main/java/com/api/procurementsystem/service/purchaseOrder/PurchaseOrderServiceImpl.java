@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +25,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
 	//public static final String ACCOUNT_SID = "AC5ce5be3917975f643c480d4fbc3d3dda";
 	//public static final String AUTH_TOKEN = "821486b86dcb96339f8fe10cbc2740cc";
+	  /** logger for this class. */
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	PurchaseOrderRepository purchaseOrderRepository;
@@ -113,6 +118,14 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	}
 		return dispatched;
 		
+	}
+	@Override
+	@CacheEvict(
+			value="routes",
+			allEntries=true)
+	public void evictCache() {
+		logger.info("> evictCache");
+		logger.info("< evictCache");
 	}
 
 }

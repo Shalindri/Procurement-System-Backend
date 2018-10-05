@@ -12,4 +12,6 @@ public interface CatalogueService {
 
 	List<Catalogue> getAllItems();
 
+	public void evictCache();
+
 }
