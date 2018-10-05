@@ -65,7 +65,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			System.out.println(po.getOrder_status());
 			String status= po.getOrder_status();
 			if(!status.equals("closed")){
-				if(status.equals("pending")){
+				if(status.equals("Pending")){
 					unapproved.add(po);
 				}
 			}
