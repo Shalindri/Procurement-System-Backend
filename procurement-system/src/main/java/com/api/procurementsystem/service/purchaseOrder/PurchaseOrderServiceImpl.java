@@ -16,10 +16,14 @@ import org.springframework.stereotype.Service;
 import com.api.procurementsystem.entity.Item;
 import com.api.procurementsystem.entity.PurchaseOrder;
 import com.api.procurementsystem.repository.PurchaseOrderRepository;
+<<<<<<< HEAD
 // TODO: Auto-generated Javadoc
 //import com.twilio.Twilio;
 //import com.twilio.rest.api.v2010.account.Message;
 //import com.twilio.type.PhoneNumber;
+=======
+
+>>>>>>> 37c0be3e06370667e15e2daa6aa9f06f8b0d0fa5
 
 /**
  * The Class PurchaseOrderServiceImpl.
@@ -92,7 +96,7 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 			System.out.println(po.getOrder_status());
 			String status= po.getOrder_status();
 			if(!status.equals("closed")){
-				if(status.equals("pending")){
+				if(status.equals("Pending")){
 					unapproved.add(po);
 				}
 			}

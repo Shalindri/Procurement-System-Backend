@@ -31,6 +31,8 @@ public class UserController {
 	@ResponseBody
 	 @RequestMapping(value = "/login", method = RequestMethod.GET)
 	 public String checkLogin(@RequestBody String username ,@RequestBody String password) {
+
+		 System.out.println(username + password);
 	     return userService.checkLogin(username, password);
 	 }
 	

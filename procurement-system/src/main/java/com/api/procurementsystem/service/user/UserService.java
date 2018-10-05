@@ -1,9 +1,12 @@
 package com.api.procurementsystem.service.user;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.api.procurementsystem.entity.PurchaseOrder;
 import com.api.procurementsystem.entity.User;
 import com.api.procurementsystem.repository.UserRepository;
 
@@ -31,7 +34,7 @@ public class UserService {
 		String role = null;
 		for(User u:users) {
 			//System.out.println(po.getOrder_status());
-			String uname= u.getPassword();
+			String uname= u.getUsername();
 			String pword=u.getPassword();
 			
 			if(uname.equals(username)){
